@@ -10,10 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import com.xx.awjw.awjw.R;
 import com.xx.awjw.awjw.common.Util;
+import com.xx.awjw.awjw.view.MyScrollView;
 import com.xx.awjw.awjw.view.TitleView;
 
 import java.util.ArrayList;
@@ -22,7 +24,8 @@ import java.util.HashSet;
 /**
  * Created by Administrator on 2015/5/15.
  */
-public class RoomDetailActivity extends Activity {
+public class RoomDetailActivity extends Activity implements MyScrollView.OnScrollListener{
+    private MyScrollView myScrollView;
     private TitleView titleView;
     private TextView sum,num;
     private HashSet<ViewGroup> unRecycledViews = new HashSet<ViewGroup>();
@@ -30,6 +33,9 @@ public class RoomDetailActivity extends Activity {
     private ImagePagerAdapter adapter;
     private ImageLoadingListener animateFirstListener = new Util.AnimateFirstDisplayListener();
     private ArrayList<String> paths = new ArrayList<String>();
+
+    private int viewpagerHeight;//viewpager的高度
+    private int viewpagerTop;//viewpager在scrollview中的位置
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +52,8 @@ public class RoomDetailActivity extends Activity {
     }
 
     private void initView() {
+        myScrollView = (MyScrollView) findViewById(R.id.myScrollView);
+        myScrollView.setOnScrollListener(this);
         titleView = (TitleView)findViewById(R.id.titleView);
         titleView.setTitle("梅山大楼");
         titleView.setBackGround(R.color.transparent);
@@ -170,14 +178,26 @@ public class RoomDetailActivity extends Activity {
                 startActivity(intent);
             }
         });
-//		imageView.setOnPhotoTapListener(new PhotoViewAttacher.OnPhotoTapListener() {
-//					@Override
-//					public void onPhotoTap(View view, float x, float y) {
-//						setresult();
-//						return;
-//
-//					}
-//
-//				});
+    }
+
+    /**
+     * 窗口有焦点的时候，即所有的布局绘制完毕的时候，我们来获取购买布局的高度和myScrollView距离父类布局的顶部位置
+     */
+    @Override
+    public void onWindowFocusChanged(boolean hasFocus) {
+        super.onWindowFocusChanged(hasFocus);
+        if(hasFocus){
+            viewpagerHeight = viewpager.getHeight();
+            viewpagerTop = viewpager.getTop();
+        }
+    }
+
+    @Override
+    public void onScroll(int scrollY) {
+        if(scrollY >= viewpagerTop){
+//            Toast.makeText(RoomDetailActivity.this,"变化",Toast.LENGTH_SHORT).show();
+        }else if(scrollY <= viewpagerTop + viewpagerHeight){
+
+        }
     }
 }
