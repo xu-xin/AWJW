@@ -48,6 +48,7 @@ public class RoomDetailActivity extends Activity {
     private void initView() {
         titleView = (TitleView)findViewById(R.id.titleView);
         titleView.setTitle("梅山大楼");
+        titleView.setTitleTextColor(getResources().getColor(R.color.transparent));
         titleView.setBackGround(R.color.transparent);
         titleView.setLeftImageButton2( R.drawable.roomdetail_back_white_selector, new View.OnClickListener() {
             @Override

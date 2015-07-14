@@ -62,6 +62,10 @@ public class TitleView extends FrameLayout {
 	public void setTitle(String textContext) {
 		mTitle.setText(textContext);
 	}
+
+	public void setTitleTextColor(int textColor){
+		mTitle.setTextColor(textColor);
+	}
 	
 	public void setTitle(String text,OnClickListener listener){
 		mTitle.setText(text);
