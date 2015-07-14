@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TabView">
+        <attr name="text" format="string"/>
+        <attr name="imageNormal" format= "reference"/>
+        <attr name="imageChecked" format= "reference"/>
+        <attr name="textcolorNormal" format= "reference"/>
+        <attr name="textcolorChecked" format= "reference"/>
+    </declare-styleable>
+</resources>

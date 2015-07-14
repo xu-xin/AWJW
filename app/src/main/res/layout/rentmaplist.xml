@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/up_ll"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/rentmaplist_tv"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical"
+            android:paddingLeft="15dp"
+            android:text="aaaa"
+            style="@style/Detail_Title"
+            android:background="@drawable/shadom"
+            />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/rentmaplist_pb"
+            android:layout_below="@+id/rentmaplist_tv"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent">
+            <ProgressBar
+                style="@style/Base.Theme.AppCompat.Dialog"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+            </LinearLayout>
+
+        <ListView
+            android:layout_below="@+id/rentmaplist_tv"
+            android:id="@+id/rentmaplist_lv"
+            android:visibility="invisible"
+            android:scrollbars="none"
+            android:listSelector="@drawable/detail_item_bg_selector"
+            android:layout_width="match_parent"
+            android:cacheColorHint="#00000000"
+            android:dividerHeight="1dp"
+            android:layout_height="wrap_content"
+            android:divider="@drawable/divider_line" />
+    </RelativeLayout>
+</LinearLayout>
