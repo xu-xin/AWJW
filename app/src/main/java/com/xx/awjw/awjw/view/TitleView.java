@@ -24,6 +24,7 @@ public class TitleView extends FrameLayout {
 	private Button mRightBtn;
 	private ImageButton left_imgbtn;
 	private ImageButton left_imgbtn1;
+	private ImageButton left_imgbtn2;
 	private ImageButton right_imgbtn;
 	private RelativeLayout relativelayout;
 
@@ -47,12 +48,14 @@ public class TitleView extends FrameLayout {
 		mRightBtn = (Button) findViewById(R.id.right_btn);
 		left_imgbtn = (ImageButton) findViewById(R.id.left_imgbtn);
 		left_imgbtn1 = (ImageButton) findViewById(R.id.left_imgbtn1);
+		left_imgbtn2 = (ImageButton) findViewById(R.id.left_imgbtn2);
 		right_imgbtn = (ImageButton) findViewById(R.id.right_imgbtn);
 		relativelayout = (RelativeLayout) findViewById(R.id.relativelayout);
 		mLeftBtn.setVisibility(View.GONE);
 		mRightBtn.setVisibility(View.GONE);
 		left_imgbtn.setVisibility(View.GONE);
 		left_imgbtn1.setVisibility(View.GONE);
+		left_imgbtn2.setVisibility(View.GONE);
 		right_imgbtn.setVisibility(View.GONE);
 	}
 
@@ -96,6 +99,12 @@ public class TitleView extends FrameLayout {
 		left_imgbtn.setImageResource(bgId);
 		if (listener != null)
 			left_imgbtn.setOnClickListener(listener);
+	}
+	public void setLeftImageButton2(int bgId, OnClickListener listener) {
+		left_imgbtn2.setVisibility(View.VISIBLE);
+		left_imgbtn2.setBackgroundResource(bgId);
+		if (listener != null)
+			left_imgbtn2.setOnClickListener(listener);
 	}
 	public void setRightImageButton(int bgId, OnClickListener listener) {
 		right_imgbtn.setVisibility(View.VISIBLE);

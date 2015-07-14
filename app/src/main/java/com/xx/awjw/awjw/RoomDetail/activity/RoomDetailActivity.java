@@ -49,10 +49,15 @@ public class RoomDetailActivity extends Activity {
         titleView = (TitleView)findViewById(R.id.titleView);
         titleView.setTitle("梅山大楼");
         titleView.setBackGround(R.color.transparent);
-        titleView.setLeftImageButton( R.drawable.roomdetail_back_gray_selector, new View.OnClickListener() {
+        titleView.setLeftImageButton2( R.drawable.roomdetail_back_white_selector, new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 RoomDetailActivity.this.finish();
+            }
+        });
+        titleView.setRightImageButton( R.drawable.roomdetail_shopping_white_selector, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
             }
         });
 

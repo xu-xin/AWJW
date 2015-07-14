@@ -36,6 +36,16 @@
         android:textColor="#ffffff"
         android:contentDescription="@null"/>
     <ImageButton
+        android:id="@+id/left_imgbtn2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:gravity="center"
+        android:textColor="#ffffff"
+        android:contentDescription="@null"/>
+    <ImageButton
         android:id="@+id/left_imgbtn1"
         android:layout_toRightOf="@+id/left_imgbtn"
         android:layout_width="40dp"
