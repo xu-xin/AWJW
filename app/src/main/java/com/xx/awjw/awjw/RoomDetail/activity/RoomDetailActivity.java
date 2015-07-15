@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +36,7 @@ public class RoomDetailActivity extends Activity implements MyScrollView.OnScrol
     private ArrayList<String> paths = new ArrayList<String>();
 
     private int viewpagerHeight;//viewpager的高度
+    private int titleViewHeight;//titleView的高度
     private int viewpagerTop;//viewpager在scrollview中的位置
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,19 +58,7 @@ public class RoomDetailActivity extends Activity implements MyScrollView.OnScrol
         myScrollView.setOnScrollListener(this);
         titleView = (TitleView)findViewById(R.id.titleView);
         titleView.setTitle("梅山大楼");
-        titleView.setTitleTextColor(getResources().getColor(R.color.transparent));
-        titleView.setBackGround(R.color.transparent);
-        titleView.setLeftImageButton2( R.drawable.roomdetail_back_white_selector, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                RoomDetailActivity.this.finish();
-            }
-        });
-        titleView.setRightImageButton( R.drawable.roomdetail_shopping_white_selector, new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-            }
-        });
+        setTitleViewBg(R.color.transparent,R.color.transparent,R.drawable.roomdetail_back_white_selector,R.drawable.roomdetail_shopping_white_selector);
 
         viewpager = (ViewPager) findViewById(R.id.viewpager);
         adapter = new ImagePagerAdapter();
@@ -195,15 +185,35 @@ public class RoomDetailActivity extends Activity implements MyScrollView.OnScrol
         if(hasFocus){
             viewpagerHeight = viewpager.getHeight();
             viewpagerTop = viewpager.getTop();
+            titleViewHeight = titleView.getHeight();
         }
     }
 
     @Override
     public void onScroll(int scrollY) {
-        if(scrollY >= viewpagerTop){
+        Log.i("xxxxxxx", "" + scrollY);
+        if(scrollY >= viewpagerTop+viewpagerHeight){
 //            Toast.makeText(RoomDetailActivity.this,"变化",Toast.LENGTH_SHORT).show();
-        }else if(scrollY <= viewpagerTop + viewpagerHeight){
-
+            setTitleViewBg(R.color.black, R.color.white, R.drawable.roomdetail_back_gray_selector, R.drawable.roomdetail_shopping_gray_selector);
+        }else {
+            setTitleViewBg(R.color.transparent, R.color.transparent, R.drawable.roomdetail_back_white_selector, R.drawable.roomdetail_shopping_white_selector);
         }
+    }
+
+
+    private  void  setTitleViewBg(int TextColorId,int bgid,int leftBgId,int rightBgId){
+        titleView.setTitleTextColor(getResources().getColor(TextColorId));
+        titleView.setBackGround(bgid);
+        titleView.setLeftImageButton2( leftBgId, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                RoomDetailActivity.this.finish();
+            }
+        });
+        titleView.setRightImageButton( rightBgId, new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            }
+        });
     }
 }
