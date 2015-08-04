@@ -3,16 +3,18 @@ package com.xx.awjw.awjw.view;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.Resources;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xx.awjw.awjw.R;
 
@@ -29,9 +31,9 @@ public class TabView extends LinearLayout {
     private Drawable imageNormal = getResources().getDrawable(R.drawable.ic_launcher);
     private Drawable imageChecked = getResources().getDrawable(R.drawable.ic_launcher);
     private int colorNormal = R.color.black;
-//    private int colorNormal = R.color.black;
+    //    private int colorNormal = R.color.black;
     private int colorChecked = R.color.black;
-//    private int colorChecked = R.color.orange;
+    //    private int colorChecked = R.color.orange;
     private Boolean checked = false;
 
     private Activity activity;
@@ -43,13 +45,9 @@ public class TabView extends LinearLayout {
 
     public void setChecked(Boolean checked) {
         this.checked = checked;
-        if (checked) {
-            this.mImageView.setImageDrawable(this.imageChecked);
-            this.mTextView.setTextColor(this.colorChecked);
-        }else{
-            this.mImageView.setImageDrawable(this.imageNormal);
-            this.mTextView.setTextColor(this.colorNormal);
-        }
+        setStatusChecked(checked);
+
+
 
     }
 
@@ -100,5 +98,40 @@ public class TabView extends LinearLayout {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public TabView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
+    }
+
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        switch (event.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                setStatusChecked(true);
+                Toast.makeText(mcontext,"点击了",Toast.LENGTH_SHORT).show();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (event.getRawX()>this.getRight()){
+                    if (mImageView.getDrawable() == imageChecked){
+                        setStatusChecked(false);
+                        Toast.makeText(mcontext,"超出了控件范围",Toast.LENGTH_SHORT).show();
+                    }
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                setStatusChecked(false);
+                Toast.makeText(mcontext,"手指抬起了",Toast.LENGTH_SHORT).show();
+                break;
+        }
+        return super.onTouchEvent(event);
+    }
+
+    public void setStatusChecked(Boolean statusChecked) {
+        if (statusChecked) {
+            this.mImageView.setImageDrawable(this.imageChecked);
+            this.mTextView.setTextColor(this.colorChecked);
+        }else{
+            this.mImageView.setImageDrawable(this.imageNormal);
+            this.mTextView.setTextColor(this.colorNormal);
+        }
     }
 }

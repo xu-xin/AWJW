@@ -34,6 +34,7 @@ import com.baidu.mapapi.map.UiSettings;
 import com.baidu.mapapi.model.LatLng;
 import com.xx.awjw.awjw.R;
 import com.xx.awjw.awjw.bean.MarkerInfoBean;
+import com.xx.awjw.awjw.rent.activity.RentChooseActivity;
 import com.xx.awjw.awjw.rent.activity.RentMapListActivity;
 import com.xx.awjw.awjw.view.TitleView;
 
@@ -323,11 +324,13 @@ public class RentFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.right_imgbtn:
 //                mBaiduMap.getMapStatus().target;获取屏幕中心点
-                LatLng point = new LatLng(31.68306, 119.960159);
-                MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory
-                        .newLatLng(point);
-                mBaiduMap.animateMapStatus(mapStatusUpdate);
-                Toast.makeText(mactivity,"搜索",Toast.LENGTH_SHORT).show();
+//                LatLng point = new LatLng(31.68306, 119.960159);
+//                MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory
+//                        .newLatLng(point);
+//                mBaiduMap.animateMapStatus(mapStatusUpdate);
+//                Toast.makeText(mactivity,"搜索",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), RentChooseActivity.class);
+                startActivity(intent);
                 break;
         }
     }
