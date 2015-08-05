@@ -107,19 +107,19 @@ public class TabView extends LinearLayout {
         switch (event.getAction()){
             case MotionEvent.ACTION_DOWN:
                 setStatusChecked(true);
-                Toast.makeText(mcontext,"µã»÷ÁË",Toast.LENGTH_SHORT).show();
+                Toast.makeText(mcontext,"ç‚¹å‡»äº†",Toast.LENGTH_SHORT).show();
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (event.getRawX()>this.getRight()){
                     if (mImageView.getDrawable() == imageChecked){
                         setStatusChecked(false);
-                        Toast.makeText(mcontext,"³¬³öÁË¿Ø¼þ·¶Î§",Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mcontext,"è¶…å‡ºäº†æŽ§ä»¶èŒƒå›´",Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;
             case MotionEvent.ACTION_UP:
                 setStatusChecked(false);
-                Toast.makeText(mcontext,"ÊÖÖ¸Ì§ÆðÁË",Toast.LENGTH_SHORT).show();
+                Toast.makeText(mcontext,"æ‰‹æŒ‡æŠ¬èµ·äº†",Toast.LENGTH_SHORT).show();
                 break;
         }
         return super.onTouchEvent(event);

@@ -1,26 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
     <com.xx.awjw.awjw.view.TitleView
         android:id="@+id/titleView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
+
     <LinearLayout
         android:id="@+id/ll"
-        android:layout_below="@id/titleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/titleView"
         android:layout_gravity="center"
         android:gravity="center">
+
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </LinearLayout>
+
     <com.baidu.mapapi.map.MapView
         android:id="@+id/bmapView"
-        android:layout_below="@id/titleView"
-        android:visibility="invisible"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_below="@id/titleView"
+        android:visibility="invisible" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_below="@+id/titleView"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1" />
+        <View
+            android:layout_width="1dp"
+            android:background="@color/background_floating_material_light"
+            android:layout_height="match_parent"
+            android:layout_margin="2dp"/>
+
+        <LinearLayout
+            android:id="@+id/fliter_ll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="3">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/filter_ic_nor"
+                android:gravity="center"
+                android:text="筛选" />
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>

@@ -50,6 +50,7 @@ public class RentFragment extends Fragment implements View.OnClickListener{
     private TitleView mTitleView;
     private Activity mactivity;
     private LinearLayout ll;
+    private LinearLayout fliter_ll;
 
 
     private MapView mMapView;
@@ -140,7 +141,8 @@ public class RentFragment extends Fragment implements View.OnClickListener{
         mTitleView.setTitle("租房");
         mTitleView.setRightImageButton(R.drawable.nav_search_selector, this);
 
-
+        fliter_ll = (LinearLayout) view.findViewById(R.id.fliter_ll);
+        fliter_ll.setOnClickListener(this);
     }
 
 
@@ -323,12 +325,14 @@ public class RentFragment extends Fragment implements View.OnClickListener{
                 mTitleView.setNav_status(!mTitleView.isNav_status());
                 break;
             case R.id.right_imgbtn:
-//                mBaiduMap.getMapStatus().target;获取屏幕中心点
+                LatLng target = mBaiduMap.getMapStatus().target;//获取屏幕中心点
 //                LatLng point = new LatLng(31.68306, 119.960159);
-//                MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory
-//                        .newLatLng(point);
-//                mBaiduMap.animateMapStatus(mapStatusUpdate);
-//                Toast.makeText(mactivity,"搜索",Toast.LENGTH_SHORT).show();
+                MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory
+                        .newLatLng(target);
+                mBaiduMap.animateMapStatus(mapStatusUpdate);
+                Toast.makeText(mactivity,"搜索",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.fliter_ll:
                 Intent intent = new Intent(getActivity(), RentChooseActivity.class);
                 startActivity(intent);
                 break;
