@@ -6,27 +6,34 @@
     </style>
 
 
-    <style name="Transparent" parent="android:Theme.Black.NoTitleBar">
-    　　
-    　　<item name="android:windowBackground">@color/transparent</item>
-    　　
-    　　<item name="android:windowIsTranslucent">true</item>
+    <style name="Transparent" parent="AppTheme">
+        　　
+        　　
+        <item name="android:windowBackground">@color/transparent</item>
+        　　
+        　　
+        <item name="android:windowIsTranslucent">true</item>
 
-    　　</style>
+        　　
+    </style>
+
     <style name="Detail_Title">
         <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="textview_style">
         <item name="android:textSize">15sp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
     <style name="room_price">
         <item name="android:textSize">17sp</item>
         <item name="android:textColor">@color/orange</item>
         <item name="android:textStyle">bold</item>
     </style>
+
     <style name="detail_textview_normal">
         <!-- 详情界面普通textview样式-->
     </style>

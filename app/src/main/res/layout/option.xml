@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal" >
+
+    <ToggleButton
+        android:id="@+id/option1"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:visibility="invisible"
+        android:background="@drawable/option_bg_off" />
+
+    <TextView
+        android:layout_width="5dp"
+        android:layout_height="match_parent" />
+
+    <ToggleButton
+        android:id="@+id/option2"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:visibility="invisible"
+        android:background="@drawable/option_bg_off"/>
+    <TextView
+        android:layout_width="5dp"
+        android:layout_height="match_parent" />
+
+    <ToggleButton
+        android:id="@+id/option3"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:visibility="invisible"
+        android:background="@drawable/option_bg_off"/>
+    <TextView
+        android:layout_width="5dp"
+        android:layout_height="match_parent" />
+
+    <ToggleButton
+        android:id="@+id/option4"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_weight="1"
+        android:visibility="invisible"
+        android:background="@drawable/option_bg_off" />
+
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="markArray">
+        <item>0</item>
+        <item>50</item>
+        <item>100</item>
+        <item>200</item>
+        <item>更高</item>
+    </string-array>
+
+    <string-array name="option_item">
+        <item >1室</item>
+        <item >2室</item>
+        <item >3室</item>
+    </string-array>
+</resources>

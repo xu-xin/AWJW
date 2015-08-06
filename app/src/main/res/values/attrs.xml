@@ -7,4 +7,28 @@
         <attr name="textcolorNormal" format= "reference"/>
         <attr name="textcolorChecked" format= "reference"/>
     </declare-styleable>
+
+    <declare-styleable name="RangeSeekbar">
+        <attr name="seekbarHeight" format="dimension" />
+        <attr name="textSize" format="dimension" />
+        <attr name="spaceBetween" format="dimension" />
+
+        <attr name="leftCursorBackground" format="reference" />
+        <attr name="rightCursorBackground" format="reference" />
+        <attr name="markTextArray" format="reference" />
+
+        <attr name="textColorNormal" format="color" />
+        <attr name="textColorSelected" format="color" />
+        <attr name="seekbarColorNormal" format="color" />
+        <attr name="seekbarColorSelected" format="color" />
+
+        <attr name="autoMoveDuration" format="integer" />
+        <attr name="sum" format="integer" />
+        <attr name="num" format="integer" />
+
+    </declare-styleable>
+
+    <declare-styleable name="OptionLayout">
+        <attr name="optionTextArray" format="reference" />
+    </declare-styleable>
 </resources>
