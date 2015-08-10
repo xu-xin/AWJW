@@ -36,7 +36,7 @@
         <activity
             android:label="@string/app_name"
             android:name=".rent.activity.RentChooseActivity"
-            android:theme="@style/Transparent"/>
+            android:theme="@style/Transparent1"/>
     </application>
 
 

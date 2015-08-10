@@ -334,7 +334,7 @@ public class RentFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.fliter_ll:
                 Intent intent = new Intent(getActivity(), RentChooseActivity.class);
-                startActivity(intent);
+                mactivity.startActivity(intent);
                 break;
         }
     }

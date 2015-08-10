@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rl"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_marginTop="100dp">
+    android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/ll_top"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="vertical" />
+
+    <LinearLayout
+        android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/ll_top"
+        android:background="@color/room_detail_bg"
         android:orientation="vertical"
-        android:background="@color/room_detail_bg">
+        android:visibility="invisible">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -73,8 +82,8 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_marginTop="@dimen/margin_10"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10"
                     android:text="面积（平方）"
                     android:textSize="16sp" />
 
@@ -85,40 +94,49 @@
                     android:background="@drawable/option_bg"
                     app:leftCursorBackground="@drawable/seekbar_selector"
                     app:markTextArray="@array/markArray"
+                    app:num="5"
                     app:rightCursorBackground="@drawable/seekbar_selector"
                     app:seekbarColorSelected="@color/orange"
                     app:seekbarHeight="3dp"
                     app:spaceBetween="40dp"
-                    app:num="5"
                     app:sum="40"
                     app:textColorSelected="@color/orange"
                     app:textSize="10dp" />
 
                 <TextView
-                    android:layout_marginTop="@dimen/margin_10"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10"
                     android:text="特色"
                     android:textSize="16sp" />
 
                 <com.xx.awjw.awjw.view.OptionLayout
-                    app:optionTextArray="@array/option_item"
-                    android:background="@color/room_detail_bg"
                     android:layout_width="match_parent"
-                    android:layout_marginTop="@dimen/margin_10"
                     android:layout_height="48dp"
-                    android:gravity="center"></com.xx.awjw.awjw.view.OptionLayout>
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:background="@color/room_detail_bg"
+                    android:gravity="center"
+                    app:optionTextArray="@array/option_item"></com.xx.awjw.awjw.view.OptionLayout>
 
             </LinearLayout>
         </ScrollView>
 
     </LinearLayout>
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/tx_sure"
         android:layout_width="match_parent"
-        android:layout_height="48dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/orange"
-        android:gravity="center"
-        android:text="确认筛选" />
+        android:visibility="invisible">
+
+        <TextView
+
+            android:layout_width="match_parent"
+
+            android:layout_height="48dp"
+            android:background="@color/orange"
+            android:gravity="center"
+            android:text="确认筛选" />
+    </LinearLayout>
 </RelativeLayout>
