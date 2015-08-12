@@ -11,132 +11,141 @@
         android:layout_height="100dp"
         android:orientation="vertical" />
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/ll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/ll_top"
-        android:background="@color/room_detail_bg"
-        android:orientation="vertical"
-        android:visibility="invisible">
+        android:visibility="invisible"
+        android:layout_below="@+id/ll_top">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:background="@color/white">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="48dp"
+            android:background="@color/room_detail_bg"
+            android:orientation="vertical"
+            >
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentLeft="true"
-                android:background="@drawable/normal_btn_selector"
-                android:text="清除"
-                android:textColor="@drawable/textcolor" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@color/white">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:background="@drawable/normal_btn_selector"
+                    android:text="清除"
+                    android:textColor="@drawable/textcolor" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="筛选条件"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/cancle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/normal_btn_selector"
+                    android:text="取消"
+                    android:textColor="@drawable/textcolor" />
+            </RelativeLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="@dimen/margin_20">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="售价（万元）"
+                        android:textSize="16sp" />
+
+                    <com.xx.awjw.awjw.view.RangeSeekbar
+                        android:id="@+id/seekbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:background="@drawable/option_bg"
+                        app:leftCursorBackground="@drawable/seekbar_selector"
+                        app:markTextArray="@array/markArray"
+                        app:rightCursorBackground="@drawable/seekbar_selector"
+                        app:seekbarColorSelected="@color/orange"
+                        app:seekbarHeight="3dp"
+                        app:spaceBetween="40dp"
+                        app:textColorSelected="@color/orange"
+                        app:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:text="面积（平方）"
+                        android:textSize="16sp" />
+
+                    <com.xx.awjw.awjw.view.RangeSeekbar
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:background="@drawable/option_bg"
+                        app:leftCursorBackground="@drawable/seekbar_selector"
+                        app:markTextArray="@array/markArray"
+                        app:num="5"
+                        app:rightCursorBackground="@drawable/seekbar_selector"
+                        app:seekbarColorSelected="@color/orange"
+                        app:seekbarHeight="3dp"
+                        app:spaceBetween="40dp"
+                        app:sum="40"
+                        app:textColorSelected="@color/orange"
+                        app:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:text="特色"
+                        android:textSize="16sp" />
+
+                    <com.xx.awjw.awjw.view.OptionLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:background="@color/room_detail_bg"
+                        android:gravity="center"
+                        app:optionTextArray="@array/option_item"></com.xx.awjw.awjw.view.OptionLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/tx_sure"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:visibility="invisible">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:text="筛选条件"
-                android:textSize="14sp" />
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentRight="true"
-                android:background="@drawable/normal_btn_selector"
-                android:text="取消"
-                android:textColor="@drawable/textcolor" />
-        </RelativeLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:padding="@dimen/margin_20">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="售价（万元）"
-                    android:textSize="16sp" />
+                android:layout_height="48dp"
+                android:background="@color/orange"
+                android:gravity="center"
+                android:text="确认筛选" />
+        </LinearLayout>
+    </RelativeLayout>
 
-                <com.xx.awjw.awjw.view.RangeSeekbar
-                    android:id="@+id/seekbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:background="@drawable/option_bg"
-                    app:leftCursorBackground="@drawable/seekbar_selector"
-                    app:markTextArray="@array/markArray"
-                    app:rightCursorBackground="@drawable/seekbar_selector"
-                    app:seekbarColorSelected="@color/orange"
-                    app:seekbarHeight="3dp"
-                    app:spaceBetween="40dp"
-                    app:textColorSelected="@color/orange"
-                    app:textSize="10dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:text="面积（平方）"
-                    android:textSize="16sp" />
-
-                <com.xx.awjw.awjw.view.RangeSeekbar
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:background="@drawable/option_bg"
-                    app:leftCursorBackground="@drawable/seekbar_selector"
-                    app:markTextArray="@array/markArray"
-                    app:num="5"
-                    app:rightCursorBackground="@drawable/seekbar_selector"
-                    app:seekbarColorSelected="@color/orange"
-                    app:seekbarHeight="3dp"
-                    app:spaceBetween="40dp"
-                    app:sum="40"
-                    app:textColorSelected="@color/orange"
-                    app:textSize="10dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:text="特色"
-                    android:textSize="16sp" />
-
-                <com.xx.awjw.awjw.view.OptionLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:background="@color/room_detail_bg"
-                    android:gravity="center"
-                    app:optionTextArray="@array/option_item"></com.xx.awjw.awjw.view.OptionLayout>
-
-            </LinearLayout>
-        </ScrollView>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/tx_sure"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:visibility="invisible">
-
-        <TextView
-
-            android:layout_width="match_parent"
-
-            android:layout_height="48dp"
-            android:background="@color/orange"
-            android:gravity="center"
-            android:text="确认筛选" />
-    </LinearLayout>
 </RelativeLayout>
