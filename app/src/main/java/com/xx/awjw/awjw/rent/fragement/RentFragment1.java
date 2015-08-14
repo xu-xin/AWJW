@@ -1,4 +1,4 @@
-package com.xx.awjw.awjw.fragment;
+package com.xx.awjw.awjw.rent.fragement;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -30,12 +30,14 @@ import com.baidu.mapapi.map.Marker;
 import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationData;
 import com.baidu.mapapi.map.OverlayOptions;
+import com.baidu.mapapi.map.UiSettings;
 import com.baidu.mapapi.model.LatLng;
 import com.xx.awjw.awjw.R;
 import com.xx.awjw.awjw.bean.MarkerInfoBean;
+import com.xx.awjw.awjw.rent.activity.RentChooseActivity;
+import com.xx.awjw.awjw.rent.activity.RentMapListActivity;
 import com.xx.awjw.awjw.view.TitleView;
 
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 
 import static com.xx.awjw.awjw.bean.ZoomScaleEnum.ZoomScalelow;
@@ -43,14 +45,16 @@ import static com.xx.awjw.awjw.bean.ZoomScaleEnum.ZoomScalelow;
 /**
  * Created by Administrator on 2015/5/13.
  */
-public class UsedHouseFragment extends Fragment implements View.OnClickListener{
+public class RentFragment1 extends Fragment implements View.OnClickListener{
     private TitleView mTitleView;
     private Activity mactivity;
     private LinearLayout ll;
+    private LinearLayout fliter_ll;
 
 
     private MapView mMapView;
     private BaiduMap mBaiduMap;
+    private UiSettings mUiSettings;
     // 定位相关
     private LocationClient mLocClient;
     private MyLocationListenner myListener = new MyLocationListenner();
@@ -75,7 +79,7 @@ public class UsedHouseFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.rentfragment1, null);
+        View view = inflater.inflate(R.layout.rentfragment, null);
 
         initView(view);
         //添加覆盖物
@@ -98,6 +102,11 @@ public class UsedHouseFragment extends Fragment implements View.OnClickListener{
 
         mMapView = (MapView) view.findViewById(R.id.bmapView);
         mBaiduMap = mMapView.getMap();
+        mUiSettings = mBaiduMap.getUiSettings();
+        //是否启用旋转手势
+        mUiSettings.setRotateGesturesEnabled(false);
+        //是否启用俯视手势
+        mUiSettings.setOverlookingGesturesEnabled(false);
         //设置缩放级别
         MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory
                 .zoomTo(12.0f);
@@ -131,7 +140,8 @@ public class UsedHouseFragment extends Fragment implements View.OnClickListener{
         mTitleView.setTitle("租房");
         mTitleView.setRightImageButton(R.drawable.nav_search_selector, this);
 
-
+        fliter_ll = (LinearLayout) view.findViewById(R.id.fliter_ll);
+        fliter_ll.setOnClickListener(this);
     }
 
 
@@ -185,15 +195,10 @@ public class UsedHouseFragment extends Fragment implements View.OnClickListener{
                     return false;
                 }
                 MarkerInfoBean bean = (MarkerInfoBean) marker.getExtraInfo().get("info");
-                byte[] bs = bean.getDesc().getBytes();
-                //用新的字符编码生成字符串
-//                String desc = null;
-//                try {
-//                    desc = new String(bs, "GBK");
-//                } catch (UnsupportedEncodingException e) {
-//                    e.printStackTrace();
-//                }
-                Toast.makeText(mactivity, bean.getDesc(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mactivity, RentMapListActivity.class);
+                intent.putExtra("data",bean);
+                mactivity.startActivity(intent);
+                mactivity.overridePendingTransition(R.anim.activity_up,R.anim.activity_down);
                 return false;
             }
         });
@@ -319,12 +324,16 @@ public class UsedHouseFragment extends Fragment implements View.OnClickListener{
                 mTitleView.setNav_status(!mTitleView.isNav_status());
                 break;
             case R.id.right_imgbtn:
-//                mBaiduMap.getMapStatus().target;获取屏幕中心点
-                LatLng point = new LatLng(31.68306, 119.960159);
+                LatLng target = mBaiduMap.getMapStatus().target;//获取屏幕中心点
+//                LatLng point = new LatLng(31.68306, 119.960159);
                 MapStatusUpdate mapStatusUpdate = MapStatusUpdateFactory
-                        .newLatLng(point);
+                        .newLatLng(target);
                 mBaiduMap.animateMapStatus(mapStatusUpdate);
                 Toast.makeText(mactivity,"搜索",Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.fliter_ll:
+                Intent intent = new Intent(getActivity(), RentChooseActivity.class);
+                mactivity.startActivity(intent);
                 break;
         }
     }
