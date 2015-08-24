@@ -54,6 +54,8 @@ public class RentFragment extends Fragment implements View.OnClickListener{
     private TitleView mTitleView;
 //    private Activity mactivity;
     private RentMapFragment rentmapfragment;
+    private RentListFragment rentListFragment;
+    private Fragment mContent;
 
 
     @Override
@@ -75,6 +77,7 @@ public class RentFragment extends Fragment implements View.OnClickListener{
         mTitleView.setTitle("租房");
         mTitleView.setRightImageButton(R.drawable.nav_search_selector, this);
         setFragment(getRentmapfragment());
+        mContent = getRentmapfragment();
 
     }
 
@@ -87,6 +90,13 @@ public class RentFragment extends Fragment implements View.OnClickListener{
         return rentmapfragment;
     }
 
+    private RentListFragment getRentListFragment(){
+        if (rentListFragment == null){
+            rentListFragment = new RentListFragment();
+        }
+        return rentListFragment;
+    }
+
 
 
 
@@ -95,7 +105,7 @@ public class RentFragment extends Fragment implements View.OnClickListener{
     private void setFragment(Fragment fragment) {
         FragmentManager fm = getChildFragmentManager();
         FragmentTransaction transaction = fm.beginTransaction();
-        transaction.replace(R.id.rentContent, fragment);
+        transaction.add(R.id.rentContent, fragment);
         transaction.commit();
     }
 
@@ -136,9 +146,11 @@ public class RentFragment extends Fragment implements View.OnClickListener{
         switch (view.getId()){
             case R.id.left_imgbtn:
                 mTitleView.setNav_status(!mTitleView.isNav_status());
+                changeFragment();
                 break;
             case R.id.left_imgbtn1:
                 mTitleView.setNav_status(!mTitleView.isNav_status());
+                changeFragment();
                 break;
             case R.id.right_imgbtn:
 //                LatLng target = mBaiduMap.getMapStatus().target;//获取屏幕中心点
@@ -149,6 +161,27 @@ public class RentFragment extends Fragment implements View.OnClickListener{
 //                Toast.makeText(mactivity,"搜索",Toast.LENGTH_SHORT).show();
                 break;
 
+        }
+    }
+
+    private void changeFragment() {
+        if (mTitleView.isNav_status()){
+            switchContent(mContent,getRentmapfragment());
+        }else{
+            switchContent(mContent,getRentListFragment());
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
+    public void switchContent(Fragment from, Fragment to) {
+        if (mContent != to) {
+            mContent = to;
+            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+            if (!to.isAdded()) {    // 先判断是否被add过
+                transaction.hide(from).add(R.id.rentContent, to).commit(); // 隐藏当前的fragment，add下一个到Activity中
+            } else {
+                transaction.hide(from).show(to).commit(); // 隐藏当前的fragment，显示下一个
+            }
         }
     }
 }

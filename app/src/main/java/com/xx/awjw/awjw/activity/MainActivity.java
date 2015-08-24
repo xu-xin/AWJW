@@ -35,7 +35,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         initView();
 
-        setFragment(getUsedHouseFragment());
+        setFragment(getRentfragment());
 
     }
 

@@ -73,7 +73,7 @@ public class RentChooseActivity extends Activity implements Animation.AnimationL
 
     @Override
     public void onAnimationEnd(Animation animation) {
-        ll_top.setBackgroundResource(R.drawable.select_bg);
+        ll_top.setBackgroundResource(R.drawable.black_transparent_bg);
     }
 
     @Override
