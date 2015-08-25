@@ -1,11 +1,15 @@
 package com.xx.awjw.awjw.rent.fragement;
 
+import android.annotation.TargetApi;
 import android.app.Fragment;
+import android.graphics.drawable.PaintDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
@@ -62,6 +66,7 @@ public class RentListFragment extends Fragment implements SwipeRefreshLayout.OnR
         }
     }
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     private void showPopupWindow(){
         View view = View.inflate(getActivity(),R.layout.pop_sort,null);
         ListView lv = (ListView) view.findViewById(R.id.lv);
@@ -73,16 +78,36 @@ public class RentListFragment extends Fragment implements SwipeRefreshLayout.OnR
                 mPopupWindow.dismiss();
             }
         });
+
+
         if (mPopupWindow == null){
             mPopupWindow = new PopupWindow();
             mPopupWindow.setWidth(option_srl.getWidth());
             mPopupWindow.setHeight(option_srl.getHeight());
             mPopupWindow.setFocusable(true);
             mPopupWindow.setOutsideTouchable(true);
+            mPopupWindow.setBackgroundDrawable(getResources().getDrawable(R.drawable.black_transparent_bg,getActivity().getTheme()));
         }
 
         mPopupWindow.setContentView(view);
         mPopupWindow.showAsDropDown(ll_sort);
         mPopupWindow.update();
+        mPopupWindow.getContentView().setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // TODO Auto-generated method stub
+                mPopupWindow.dismiss();
+                return true;
+            }
+
+        });
+    }
+
+    @Override
+    public void onDestroy() {
+        if (mPopupWindow != null){
+            mPopupWindow = null;
+        }
+        super.onDestroy();
     }
 }
